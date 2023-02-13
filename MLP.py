@@ -63,6 +63,10 @@ def mlp(train, test, validate):
     print("")
     print("========================== Model's Compiled ==========================")
 
+    keras.utils.plot_model(model, show_shapes=True, to_file='MLP_model.png')
+
+
+
     # Accuracy Callback
     class handwriting_acc_callback(keras.callbacks.Callback):
         def on_epoch_end(self, epoch, logs=None):
@@ -88,10 +92,10 @@ def mlp(train, test, validate):
 
 
 if __name__ == '__main__':
-    digit_data = pd.read_csv("data/mnist_all.csv")
+    digit_data = pd.read_csv("mnist_all.csv")
 
     train, test, validate = preprocess_data(digit_data)
-    plot_img_number(train)
+    #plot_img_number(train)
     mlp(train, test, validate)
 
     # Creating model
